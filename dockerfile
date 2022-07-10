@@ -6,4 +6,4 @@ WORKDIR /core
 
 COPY . /core
 
-RUN npm install
+RUN yarn install
