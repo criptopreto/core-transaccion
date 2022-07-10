@@ -1,0 +1,11 @@
+version: "3.1"
+services:
+  core:
+    build: .
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/core
