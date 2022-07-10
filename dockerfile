@@ -6,7 +6,7 @@ WORKDIR /core
 
 COPY package.json yarn.lock /core/
 
-RUN YARN
+RUN yarn
 
 COPY . /core
 
