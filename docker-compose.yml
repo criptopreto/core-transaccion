@@ -2,10 +2,12 @@ version: "3.1"
 services:
   core:
     build: .
+    command: "yarn start"
     environment:
       - NODE_ENV=production
       - PORT=3001
     ports:
       - "3001:3001"
     volumes:
-      - .:/core
+      - ./:/core
+      - /core/node_modules
