@@ -103,6 +103,42 @@ module.exports = {
       res.status(500).send({ success: false, message: err.message });
     }
   },
+  signin: async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+      const data = await User.signinWithUser(username);
+
+      if (!data) {
+        return res.status(400).send({
+          success: false,
+          message: "Username or password isn't correct",
+        });
+      }
+
+      let valid = await argon2.verify(data.hash, password);
+      if (!valid) {
+        return res.status(400).send({
+          success: false,
+          message: "Username or password isn't correct",
+        });
+      }
+
+      delete data.dataValues.hash;
+
+      // Generate JWT
+      let payload = {
+        user: data,
+      };
+      let token = await res.jwtSign(payload, {
+        expiresIn: "1d",
+      });
+      return res.status(200).send({ success: true, token });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ success: false, message: err.message });
+    }
+  },
   verify_email: async (req, res) => {
     const { id, otp_email } = req.body;
     const transaction = await db.sequelize.transaction();
@@ -123,5 +159,19 @@ module.exports = {
       await transaction.rollback();
       res.status(500).send({ success: false, message: err.message });
     }
+  },
+  get_user_info: async (req, res) => {
+    const user_id = req.user;
+    console.log(user_id);
+    try {
+      const user = await User.getUserInfo(user_id);
+      if (!user) {
+        return res.status(404).send({});
+      }
+      return res.status(200).send(user);
+    } catch (error) {
+      console.error(error);
+    }
+    return res.status(404).send({});
   },
 };

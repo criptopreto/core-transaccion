@@ -27,8 +27,7 @@ module.exports = async function (fastify, opts) {
         if (err) {
           return done(err);
         }
-        req.user = decoded.user_id;
-        req.session = decoded.session_token;
+        req.user = decoded.user.id;
         done();
       });
     })

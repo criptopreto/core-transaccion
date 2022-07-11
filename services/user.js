@@ -17,6 +17,55 @@ async function findByEmail(email) {
   return await users.findOne({ where: { email } });
 }
 
+async function getUserInfo(id) {
+  return users.findOne({
+    where: { id },
+    attributes: [
+      "id",
+      "id_card",
+      "email",
+      "phone",
+      "username",
+      "country",
+      "status",
+      "staff",
+      "role",
+      "image",
+    ],
+    include: [
+      {
+        model: db.pay_accounts,
+        attributes: ["id", "pay_id", "currency_id", "balance"],
+      },
+    ],
+  });
+}
+
+async function signinWithUser(user) {
+  return await users.findOne({
+    where: { [Op.or]: [{ email: user }, { phone: user }] },
+    attributes: [
+      "id",
+      "id_card",
+      "email",
+      "phone",
+      "username",
+      "hash",
+      "country",
+      "status",
+      "staff",
+      "role",
+      "image",
+    ],
+    include: [
+      {
+        model: db.pay_accounts,
+        attributes: ["id", "pay_id", "currency_id", "balance"],
+      },
+    ],
+  });
+}
+
 async function userExists({ email, phone, username, id_card }, transaction) {
   let user = await users.findOne({
     where: { [Op.or]: [{ email }, { phone }, { username }, { id_card }] },
@@ -114,4 +163,6 @@ module.exports = {
   findByIdAndCurrency,
   findUserByPaymentMethod,
   findUserByPayId,
+  signinWithUser,
+  getUserInfo,
 };

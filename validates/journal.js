@@ -42,6 +42,19 @@ const JournalSchema = {
           properties: {
             success: { type: "boolean" },
             message: { type: "string" },
+            data: {
+              type: "object",
+              properties: {
+                id: { type: "string" },
+                amount: { type: "number" },
+                type: { type: "string" },
+                exchange_fee: { type: "string" },
+                status: { type: "string" },
+                currency_id: { type: "string" },
+                comments: { type: "string" },
+                createdAt: { type: "string" },
+              },
+            },
           },
         },
         400: {

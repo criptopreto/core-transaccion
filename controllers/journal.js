@@ -105,6 +105,13 @@ module.exports = {
           .send({ success: false, message: "Insufficient balance" });
       }
 
+      if (Number(amount) === 0) {
+        await transaction.rollback();
+        return res
+          .status(400)
+          .send({ success: false, message: "Amount Invalid" });
+      }
+
       let receiver_user = await User.findByIdAndCurrency(
         receiver_id,
         currency,
@@ -169,13 +176,13 @@ module.exports = {
         comments: comment,
       };
 
-      await create_transaction(transactionData, transaction);
+      let result = await create_transaction(transactionData, transaction);
 
       // Create Transaction Saliente desde Destino
       transactionData = {
         amount: totalAmount,
         crypto_hash: "",
-        type: 1,
+        type: 2,
         exchange_fee: feePercent,
         status: "Finish",
         account_id: receiver_account.id,
@@ -186,7 +193,9 @@ module.exports = {
 
       await create_transaction(transactionData, transaction);
       await await transaction.commit();
-      return res.status(200).send({ success: true, message: "Pay success" });
+      return res
+        .status(200)
+        .send({ success: true, message: "Pay success", data: result.toJSON() });
     } catch (error) {
       await transaction.rollback();
       return res.status(500).send({ success: false, message: error.message });

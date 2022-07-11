@@ -138,13 +138,12 @@ const AuthSchemas = {
       tags: ["users"],
       summary: "Login user",
       body: {
-        required: ["email", "password"],
+        required: ["username", "password"],
         type: "object",
         properties: {
-          email: {
+          username: {
             type: "string",
-            format: "email",
-            description: "User email",
+            description: "User username",
           },
           password: {
             type: "string",
