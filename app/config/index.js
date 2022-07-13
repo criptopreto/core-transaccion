@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: "http://44.195.202.73:3001",
+  baseUrl: "https://demo.moneyapp.pro:3001",
 };
