@@ -1,13 +1,32 @@
 version: "3.1"
 services:
-  core:
-    build: .
-    command: "yarn start"
+  api:
+    container_name: pay-api
+    restart: always
+    build:
+      context: ./api
     environment:
       - NODE_ENV=production
       - PORT=3001
     ports:
       - "3001:3001"
     volumes:
-      - ./:/core
-      - /core/node_modules
+      - ./api:/api
+      - /api/node_modules
+    networks:
+      - pay_network
+  app:
+    container_name: pay-app
+    build:
+      context: ./app
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    networks:
+      - pay_network
+networks:
+  pay_network:
+    driver: bridge
