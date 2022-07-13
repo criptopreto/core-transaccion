@@ -30,11 +30,12 @@ services:
       - pay_network
   web:
     restart: always
-    build: ./nginx
+    image: nginx:latest
     ports:
       - 80:80
+      - 443:443
+    command: nginx -g 'daemon off;'"
     volumes:
-      - ./app/build:/usr/share/nginx/html
       - ./nginx:/etc/nginx
       - ./cert:/etc/nginx/cert
     networks:
