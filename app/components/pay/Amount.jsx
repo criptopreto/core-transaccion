@@ -69,6 +69,7 @@ export default function Amount({ balance = 0, currency_id, user_id }) {
       currency: currency_id,
     };
     let response = await payServices.send_pay(payment_data);
+    console.log("Result Pay:", response);
     dispatch(setPayAccountBalance({ index: 0, balance: response.balance }));
     dispatch(setLoadingPay(false));
     dispatch(setResultPay(response));

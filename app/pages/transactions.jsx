@@ -43,7 +43,7 @@ export default function Transactions() {
               <BiHistory className="h-5 w-5" />
               Historial de Transacciones
             </div>
-            <div className="mt-8">
+            <div className="mt-8 overflow-auto">
               <TransactionsHistory />
             </div>
           </div>

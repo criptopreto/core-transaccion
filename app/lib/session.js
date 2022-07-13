@@ -3,6 +3,6 @@ export const sessionOptions = {
   password: process.env.SECRET_COOKIE_PASSWORD,
   cookieName: "super-pay",
   cookieOptions: {
-    secure: true,
+    secure: false,
   },
 };

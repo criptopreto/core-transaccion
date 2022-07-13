@@ -28,6 +28,20 @@ services:
       - "80:80"
     networks:
       - pay_network
+  web:
+    restart: always
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./app/build:/usr/share/nginx/html
+      - ./nginx:/etc/nginx
+      - ./cert:/etc/nginx/cert
+    networks:
+      - pay_network
+    depends_on:
+      - app
+      - api
 networks:
   pay_network:
     driver: bridge

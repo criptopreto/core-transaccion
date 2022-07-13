@@ -7,7 +7,7 @@ module.exports = async function (fastify) {
     });
     socket.join(socket.session_id);
 
-    console.log(`User ${socket.session_id} connected`);
+    console.log(`############## User ${socket.session_id} connected`);
 
     socket.on("disconnect", (socket) => {
       console.log("a user disconnected", socket.user_id);

@@ -22,7 +22,6 @@ export default function Loginform() {
 
   useEffect(() => {
     if (socket) {
-      console.log(socket);
       socket.on("socket:session", (data) => {
         console.log(data);
         localStorage.setItem("session_id", data.session_id);
@@ -84,6 +83,8 @@ export default function Loginform() {
                       socket.auth.user_id = user.token;
                       setToken(user.token);
                       socket.connect();
+                    } else {
+                      throw new Error("Credenciales inválidas");
                     }
                   } catch (error) {
                     console.log(error);

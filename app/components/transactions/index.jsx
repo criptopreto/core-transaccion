@@ -31,7 +31,7 @@ export default function Index() {
     dispatch(fetchHistory());
   }, []);
   return (
-    <div className="overflow-auto">
+    <div className="mb-2">
       {history.length > 0 ? (
         <div className="flex items-center flex-col gap-y-2">
           {history.map((his) => (
@@ -42,9 +42,9 @@ export default function Index() {
               <div className="flex gap-x-2 justify-between items-center">
                 <div className="flex-0 items-center">
                   {his.type === "Credit" ? (
-                    <BsArrowUpRightSquareFill className="h-6 w-6 text-indigo-600" />
+                    <BsArrowDownLeftSquareFill className="h-6 w-6 text-indigo-600" />
                   ) : (
-                    <BsArrowDownLeftSquareFill className="h-6 w-6 text-violet-600" />
+                    <BsArrowUpRightSquareFill className="h-6 w-6 text-violet-600" />
                   )}
                 </div>
                 <div className="w-full">
@@ -54,7 +54,7 @@ export default function Index() {
                     </div>
                   ) : (
                     <div className="text-indigo-900 text-sm">
-                      Transferencia #{getLast8Digits(his.id)}
+                      Transferencia Recibida #{getLast8Digits(his.id)}
                     </div>
                   )}
                   <div className="text-indigo-700/80 text-xs">

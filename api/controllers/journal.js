@@ -193,29 +193,31 @@ module.exports = {
         comments: comment,
       };
       await create_transaction(transactionData, transaction);
-      await await transaction.commit();
+      await transaction.commit();
 
-      req.io.in(receiver_id).emit("pay:payment_incoming", {
+      /* req.io.in(receiver_id).emit("pay:payment_incoming", {
         type: transactionData.type,
         from: user.name,
         date: new Date(),
         comments: comment,
         amount: totalAmount,
         balance: receiver_account.balance,
-      });
+      }); */
       return res
         .status(200)
         .send({ success: true, message: "Pay success", data: result });
     } catch (error) {
+      console.log(error);
       await transaction.rollback();
       return res.status(500).send({ success: false, message: error.message });
     }
   },
   history: async (req, res) => {
     const user_id = req.user;
+    console.log("#####USER", user_id);
 
     let transactions = await db.transactions.findAll({
-      where: user_id,
+      where: { user_id: user_id },
       order: [["createdAt", "DESC"]],
       limit: 20,
       include: [
@@ -233,6 +235,6 @@ module.exports = {
       ],
     });
 
-    return res.status(200).send(transactions);
+    return res.status(200).send(transactions, { user_id: user_id });
   },
 };
