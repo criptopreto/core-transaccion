@@ -23,9 +23,9 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
-      - PORT=80
+      - PORT=
     ports:
-      - "80:80"
+      - "3000:3000"
     networks:
       - pay_network
   web:
