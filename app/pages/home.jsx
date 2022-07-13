@@ -34,7 +34,8 @@ export const getServerSideProps = withIronSessionSsr(async function ({
   req,
   res,
 }) {
-  const user = req.session.user;
+  const user = req?.session?.user;
+  console.log("user", user);
 
   if (!user || user === undefined) {
     res.setHeader("location", "/auth/signin");
