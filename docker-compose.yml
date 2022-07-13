@@ -5,6 +5,7 @@ services:
     restart: always
     build:
       context: ./api
+    command: "yarn start"
     environment:
       - NODE_ENV=production
       - PORT=3001
