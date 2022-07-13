@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: "http://api:3001",
+  baseUrl: "http://44.195.202.73:3001",
 };
