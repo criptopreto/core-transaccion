@@ -12,5 +12,6 @@ export const socketEvent = () => {
   } else {
     socket.auth = { user_id: socket_token };
   }
+
   return socket;
 };

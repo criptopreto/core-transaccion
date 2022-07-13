@@ -19,7 +19,8 @@ function convertToBs(value, secondary) {
 export default function SaldoMain() {
   const { user } = useUser();
   const config = useSelector((state) => state.app.config);
-  let saldo = (user?.pay_accounts && user?.pay_accounts[0]?.balance) || 0;
+  let saldo =
+    useSelector((state) => state.app?.user?.pay_accounts[0]?.balance) || 0;
   return (
     <div className="mb-2">
       <div className="w-full h-1/6 bg-gradient-to-br from-purple-900/70 to-violet-700/70 rounded-lg px-5 py-2 shadow-lg">

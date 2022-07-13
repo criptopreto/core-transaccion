@@ -31,3 +31,7 @@ yarn-error.log*
 .env.prod
 # vercel
 .vercel
+
+
+/lib/session.js
+/config/index.js

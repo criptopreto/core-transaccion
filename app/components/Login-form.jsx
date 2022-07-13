@@ -23,11 +23,16 @@ export default function Loginform() {
   useEffect(() => {
     if (socket) {
       socket.on("socket:session", (data) => {
-        console.log(data);
         localStorage.setItem("session_id", data.session_id);
         socket.auth = { session_id: data.session_id, user_id: token };
         Router.push("/home");
       });
+      socket.on("connect", (data) => {
+        console.log("Connections");
+      });
+      console.log("socket loggin", socket);
+    } else {
+      console.log("No hay Socket");
     }
   }, [socket]);
 
@@ -75,12 +80,15 @@ export default function Loginform() {
                       }),
                       false
                     );
+                    console.log("user logged", user);
+                    console.log("user loggedin", user?.isLoggedIn);
+                    console.log("Socket", socket);
                     if (user?.isLoggedIn) {
                       localStorage.setItem(
                         "socket",
                         JSON.stringify(user.token)
                       );
-                      socket.auth.user_id = user.token;
+                      socket.auth = { user_id: user.token };
                       setToken(user.token);
                       socket.connect();
                     } else {

@@ -9,12 +9,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useUser from "../lib/useUser";
 import fetchJson from "../lib/fetchJson";
+import useSocket from "../config/useSocket.js";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
+  const socket = useSocket();
   const { user, mutateUser } = useUser({
     redirectTo: "/auth/signin",
   });
@@ -27,6 +29,7 @@ export default function Header() {
       name: "Cerrar Sesión",
       href: "#",
       action: async () => {
+        socket.disconnect();
         mutateUser(
           await fetchJson("/api/auth/logout", { method: "POST" }),
           false
