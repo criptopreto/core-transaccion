@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="532.41" height="944.17" viewBox="0 0 532.41 944.17">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_243" data-name="Rectángulo 243" width="532.41" height="944.17" fill="rgba(0,0,0,0)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#485E7B"/>
+      <stop offset="1" stop-color="#2F3662"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#495B8D"/>
+      <stop offset="1" stop-color="#2F3662" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="19.483" y1="1.379" x2="20.483" y2="1.379" xlink:href="#linear-gradient-2"/>
+  </defs>
+  <g id="OBJECTS" transform="translate(-7.166 -9.004)">
+    <g id="Grupo_164" data-name="Grupo 164" transform="translate(7.166 9.004)">
+      <g id="Grupo_163" data-name="Grupo 163" transform="translate(0)">
+        <g id="Grupo_162" data-name="Grupo 162">
+          <g id="Grupo_161" data-name="Grupo 161" clip-path="url(#clip-path)">
+            <g id="Grupo_160" data-name="Grupo 160">
+              <rect id="Rectángulo_241" data-name="Rectángulo 241" width="532.41" height="944.17" fill="url(#linear-gradient)"/>
+              <g id="Grupo_159" data-name="Grupo 159">
+                <g id="Grupo_158" data-name="Grupo 158">
+                  <g id="Grupo_157" data-name="Grupo 157" clip-path="url(#clip-path)">
+                    <g id="Grupo_156" data-name="Grupo 156" transform="translate(-48.173 -31.357)">
+                      <path id="Trazado_108" data-name="Trazado 108" d="M-8.124,708.115c90.739-32.121,48.173-238.036,81.189-285.139,43.151-61.562,91.252-50.135,129.741-95.684,61.712-73.039,30.243-217.578,72.371-261.527,40.842-42.608,129.8-60.4,129.8-68.893H-8.124Z" transform="translate(8.124 3.127)" fill-rule="evenodd" fill="url(#linear-gradient-2)"/>
+                      <path id="Trazado_109" data-name="Trazado 109" d="M464.217,100.978c-90.739,32.121-48.17,238.036-81.186,285.139C339.88,447.679,291.779,436.252,253.29,481.8c-61.715,73.038-30.243,217.578-72.371,261.527-40.842,42.608-129.8,60.4-129.8,68.892h413.1Z" transform="translate(135.535 168.112)" fill-rule="evenodd" fill="url(#linear-gradient-3)"/>
+                    </g>
+                  </g>
+                </g>
+                <path id="Trazado_110" data-name="Trazado 110" d="M156.34,190.717" transform="translate(313.656 278.973)" fill="rgba(0,0,0,0)" fill-rule="evenodd"/>
+                <path id="Trazado_111" data-name="Trazado 111" d="M26.976,190.717" transform="translate(35.439 278.973)" fill="rgba(0,0,0,0)" fill-rule="evenodd"/>
+                <path id="Trazado_112" data-name="Trazado 112" d="M156.34,224.4" transform="translate(313.656 332.349)" fill="rgba(0,0,0,0)" fill-rule="evenodd"/>
+                <path id="Trazado_113" data-name="Trazado 113" d="M26.976,224.4" transform="translate(35.439 332.349)" fill="rgba(0,0,0,0)" fill-rule="evenodd"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
