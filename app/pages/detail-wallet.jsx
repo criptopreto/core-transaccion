@@ -7,10 +7,11 @@ import icoDash from "../public/assets/images/ico_dash.svg";
 import icoETH from "../public/assets/images/ico_eth.svg";
 import icoBTC from "../public/assets/images/ico_btc.svg";
 import Image from "next/image";
+import { GrConnect } from "react-icons/gr";
 
 const icon_list = { dash: icoDash, ethereum: icoETH, bitcoin: icoBTC };
 
-export default function detailwallet() {
+export default function DetailWallet() {
   const router = useRouter();
   const query = router.query;
   const handleBack = () => {
@@ -63,8 +64,9 @@ export default function detailwallet() {
           </div>
         </div>
         <div className="mt-10">
-          <p className="text-3xl text-center font-semibold">
-            Conectar CORE CRIPTO
+          <p className="text-3xl flex text-center text-indigo-900 font-semibold gap-3">
+            <GrConnect className="ml-auto" />
+            <span className="mr-auto">Conectar CORE CRIPTO</span>
           </p>
         </div>
       </Layout>
