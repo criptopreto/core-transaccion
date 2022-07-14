@@ -52,7 +52,6 @@ export default function Layout({
 
   const listenEvents = () => {
     if (socket) {
-      console.log(socket);
       socket.on("pay:payment_incoming", (data) => {
         if (data.type === 2) {
           dispatch(setPayAccountBalance({ index: 0, balance: data.balance }));

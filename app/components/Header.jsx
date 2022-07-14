@@ -20,14 +20,13 @@ export default function Header() {
   const { user, mutateUser } = useUser({
     redirectTo: "/auth/signin",
   });
-  const router = useRouter();
   const dispatch = useDispatch();
 
   const userNavigation = [
     { name: "Perfil", href: "/profile/1", action: null },
     {
       name: "Cerrar Sesión",
-      href: "#",
+      href: "/home",
       action: async () => {
         socket.disconnect();
         mutateUser(

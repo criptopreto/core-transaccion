@@ -15,7 +15,7 @@ const initialValues = {
 export default function Loginform() {
   const socket = useSocket();
   const [errorMsg, setErrorMsg] = useState("");
-  const [token, setToken] = useState(null);
+  const [enviando, setEnviando] = useState(null);
   const { mutateUser } = useUser({
     redirectIfFound: false,
   });
@@ -24,15 +24,13 @@ export default function Loginform() {
     if (socket) {
       socket.on("socket:session", (data) => {
         localStorage.setItem("session_id", data.session_id);
-        socket.auth = { session_id: data.session_id, user_id: token };
+        socket.auth = { session_id: data.session_id };
+        socket.emit("socket:join", {});
         Router.push("/home");
       });
       socket.on("connect", (data) => {
-        console.log("Connections");
+        console.log("Connections", socket);
       });
-      console.log("socket loggin", socket);
-    } else {
-      console.log("No hay Socket");
     }
   }, [socket]);
 
@@ -72,6 +70,7 @@ export default function Loginform() {
                 initialValues={initialValues}
                 onSubmit={async (values, { resetForm }) => {
                   try {
+                    setEnviando(true);
                     let user = await mutateUser(
                       await fetchJson("/api/auth/signin", {
                         method: "POST",
@@ -80,22 +79,16 @@ export default function Loginform() {
                       }),
                       false
                     );
-                    console.log("user logged", user);
-                    console.log("user loggedin", user?.isLoggedIn);
-                    console.log("Socket", socket);
                     if (user?.isLoggedIn) {
-                      localStorage.setItem(
-                        "socket",
-                        JSON.stringify(user.token)
-                      );
+                      localStorage.setItem("socket", user.token);
                       socket.auth = { user_id: user.token };
-                      setToken(user.token);
                       socket.connect();
                     } else {
                       throw new Error("Credenciales inválidas");
                     }
                   } catch (error) {
-                    console.log(error);
+                    setEnviando(false);
+                    console.log(error.message);
                     if (error instanceof FetchError) {
                       resetForm({ values: { ...values, password: "" } });
                       setErrorMsg(error.data.message);
@@ -166,11 +159,9 @@ export default function Loginform() {
                       <button
                         type="submit"
                         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        disabled={isSubmitting}
+                        disabled={enviando}
                       >
-                        {isSubmitting
-                          ? "Iniciando Sesion..."
-                          : "Iniciar Sesión"}
+                        {enviando ? "Iniciando Sesion..." : "Iniciar Sesión"}
                       </button>
                     </div>
                   </Form>

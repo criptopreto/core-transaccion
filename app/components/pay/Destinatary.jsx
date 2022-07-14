@@ -3,6 +3,7 @@ import { Html5Qrcode } from "html5-qrcode";
 import React, { useEffect, useState } from "react";
 import { MdQrCodeScanner, MdOutlineCancel } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { GiCancel, GiCheckMark } from "react-icons/gi";
 import {
   setDestinatary,
   setLoading,
@@ -19,6 +20,7 @@ function classNames(...classes) {
 }
 
 export default function Destinatary() {
+  const [destinatary_fetched, setDestinataryFetched] = useState(false);
   const dispatch = useDispatch();
   const destinatary = useSelector((state) => state.app.pay.destinatary);
   const user = useSelector((state) => state.app.user);
@@ -56,7 +58,7 @@ export default function Destinatary() {
   };
 
   const handleContinue = async () => {
-    if (!user_destinatary) {
+    if (!user_destinatary || !destinatary_fetched) {
       dispatch(setLoading(true));
       let data = await findUserByPaymentMethod({
         type: inputType.type,
@@ -65,10 +67,10 @@ export default function Destinatary() {
       dispatch(setLoading(false));
       let dest = data?.user || null;
       console.log(dest);
-      if (dest.email === user.email) {
+      if (dest && dest.email === user.email) {
         dest = false;
       }
-
+      setDestinataryFetched(true);
       dispatch(setUserDestinatary(dest));
     } else {
       dispatch(setPayStep(1));
@@ -220,6 +222,8 @@ export default function Destinatary() {
             className="p-3 rounded-md w-full outline-indigo-700 bg-slate-300/80 placeholder:text-slate-500"
             value={destinatary}
             onChange={(e) => {
+              console.log(e.target.value);
+              setDestinataryFetched(false);
               dispatch(setDestinatary(e.target.value));
             }}
           />
@@ -233,8 +237,8 @@ export default function Destinatary() {
         </div>
         {user_destinatary ? (
           <div className="mt-2">
-            <p className="text-lg text-indigo-800">
-              {user_destinatary.name} (
+            <p className="text-lg text-indigo-800 flex gap-2 items-center">
+              <GiCheckMark /> {user_destinatary.name} (
               <span className="italic text-indigo-700/70">
                 {user_destinatary.username}
               </span>
@@ -243,7 +247,8 @@ export default function Destinatary() {
           </div>
         ) : user_destinatary === null ? (
           <div className="mt-2">
-            <p className="text-md text-red-800/90 italic">
+            <p className="text-md text-red-800/90 italic flex gap-2 items-center">
+              <GiCancel />
               Usuario no existe en el sistema
             </p>
           </div>

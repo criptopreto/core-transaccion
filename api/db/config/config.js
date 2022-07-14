@@ -14,6 +14,7 @@ module.exports = {
       acquire: 60000,
       maxUses: 5,
     },
+    logging: false,
   },
   test: {
     username: process.env.DB_USER,
@@ -28,5 +29,6 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: "postgres",
+    logging: false,
   },
 };

@@ -23,7 +23,7 @@ export default function Transactions() {
           initial={{ y: "-100%" }}
           animate={{ y: "0%" }}
           transition={{ delay: 0.2 }}
-          className="min-h-[15%] bg-gradient-to-r from-purple-700 to-violet-800 flex flex-col p-2 mb-4 rounded-b-3xl shadow-sm"
+          className="min-h-[15%] fixed w-full bg-gradient-to-r from-purple-700 to-violet-800 flex flex-col p-2 mb-4 rounded-b-3xl shadow-sm"
         >
           <div className="flex">
             <div className="flex-1 items-center flex justify-between text-slate-300">
@@ -38,12 +38,12 @@ export default function Transactions() {
           </div>
         </motion.header>
         <div>
-          <div className="max-w-[90%] mx-auto">
-            <div className="flex gap-2 items-center text-indigo-800">
+          <div className="max-w-[90%] mx-auto overflow-auto">
+            <div className="flex gap-2 items-center text-indigo-800 mt-48">
               <BiHistory className="h-5 w-5" />
               Historial de Transacciones
             </div>
-            <div className="mt-8 overflow-auto">
+            <div className="mt-8">
               <TransactionsHistory />
             </div>
           </div>
