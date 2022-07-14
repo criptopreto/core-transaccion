@@ -39,7 +39,7 @@ const initialState = {
   user: {
     pay_accounts: [],
   },
-  history: [],
+  history: null,
   loading: false,
   loading_pay: false,
 };

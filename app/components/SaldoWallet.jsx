@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import { TbArrowNarrowUp } from "react-icons/tb";
 import { TbArrowNarrowDown } from "react-icons/tb";
 import { TbEqual } from "react-icons/tb";
+import { RiCoupon3Fill } from "react-icons/ri";
+import { FaBitcoin, FaSpinner } from "react-icons/fa";
 
 const icon_list = { dash: icoDash, ethereum: icoETH, bitcoin: icoBTC };
 
@@ -79,10 +81,13 @@ export default function SaldoWallet() {
 
   useEffect(() => {
     if (!precio) return;
-    console.log(precio);
   }, [precio]);
   return (
     <>
+      <span className="text-indigo-100 text-lg font-semibold flex items-center gap-2">
+        <FaBitcoin />
+        Mis Criptoactivos
+      </span>
       {precio ? (
         <div className="overflow-y-auto">
           <div className="flex gap-y-2 flex-col">
@@ -116,10 +121,10 @@ export default function SaldoWallet() {
                       </div>
                       <div
                         className={`
-                            ${
-                              getChange(wallet.symbol.toUpperCase()).color
-                            } flex items-center
-                          `}
+                        ${
+                          getChange(wallet.symbol.toUpperCase()).color
+                        } flex items-center
+                      `}
                       >
                         {getChange(wallet.symbol.toUpperCase()).intention}
                         <div>
@@ -134,9 +139,12 @@ export default function SaldoWallet() {
           </div>
         </div>
       ) : (
-        <div className="fixed w-full">
-          <div className="mx-auto">
-            <span className="text-lg text-indigo-100">Cargando...</span>
+        <div className="flex h-2/4 w-full">
+          <div className="mx-auto my-auto">
+            <span className="flex mx-auto items-center gap-2 text-indigo-300 text-xl">
+              <FaSpinner className="animate-spin" />
+              Cargando...
+            </span>
           </div>
         </div>
       )}

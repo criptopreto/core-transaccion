@@ -32,8 +32,8 @@ export default function Header() {
           await fetchJson("/api/auth/logout", { method: "POST" }),
           false
         );
-        localStorage.removeItem("socket");
-        localStorage.removeItem("session_id");
+        sessionStorage.removeItem("socket");
+        sessionStorage.removeItem("session_id");
       },
     },
   ];

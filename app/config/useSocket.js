@@ -7,11 +7,9 @@ function useSocket() {
   useEffect(() => {
     const socketIo = socketEvent();
 
-    console.log("Set socket", socketIo);
     setSocket(socketIo);
 
     function cleanup() {
-      console.log("Cleanup socket");
       socketIo.disconnect();
     }
     return cleanup;

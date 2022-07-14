@@ -114,9 +114,6 @@ module.exports = {
           message: "Username or password isn't correct",
         });
       }
-      console.log("AQUI");
-      console.log(data.hash, password);
-
       let valid = await argon2.verify(data.hash, password);
       console.log(valid);
       if (!valid) {

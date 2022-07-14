@@ -5,7 +5,6 @@ import useSocket from "../config/useSocket";
 import {
   fetchConfig,
   fetchUser,
-  setConfigBalance,
   setPayAccountBalance,
 } from "../redux/appSlice";
 import Header from "./Header";
@@ -19,6 +18,7 @@ export default function Layout({
   nonHeader = false,
   nonSidebar = false,
   className = null,
+  height = "h-[100%]",
 }) {
   const socket = useSocket();
   const loading = useSelector((state) => state.app.loading);
@@ -74,7 +74,7 @@ export default function Layout({
         <div className="md:pl-64 flex flex-col flex-1 h-full">
           {nonHeader ? "" : <Header />}
 
-          <main className="h-[91%]">
+          <main className={height}>
             <div className="h-full">{children}</div>
           </main>
         </div>

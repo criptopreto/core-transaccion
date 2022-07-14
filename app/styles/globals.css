@@ -5,3 +5,7 @@
 #__next {
   @apply h-full;
 }
+
+body {
+  font-family: "Inter", sans-serif;
+}

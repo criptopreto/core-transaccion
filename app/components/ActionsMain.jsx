@@ -7,7 +7,7 @@ export default function ActionsMain() {
   const socket = useSocket();
   return (
     <>
-      <div className="flex gap-x-4 w-full">
+      <div className="flex gap-x-4 px-1 w-full">
         <Link href="/pay-destination">
           <a
             className="inline-flex items-center text-center px-6 gap-2 py-3 border border-transparent shadow-sm text-base font-medium rounded-md w-full text-white bg-gradient-to-br from-indigo-900 to-indigo-800 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-700"

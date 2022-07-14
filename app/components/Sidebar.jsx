@@ -12,6 +12,7 @@ import { setLoading, setSidebarOpen } from "../redux/appSlice";
 import Image from "next/image";
 import logoImg from "../public/assets/images/logo.svg";
 import { useRouter } from "next/router";
+import { BsFillShieldSlashFill } from "react-icons/bs";
 
 const navigation = [
   { name: "Inicio", href: "/home", icon: FaHome },
@@ -25,6 +26,10 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
+const bottom_navigation = [
+  { name: "No verificado", href: "/verification", icon: BsFillShieldSlashFill },
+];
 
 export default function Sidebar() {
   const router = useRouter();
@@ -133,15 +138,33 @@ export default function Sidebar() {
                     ))}
                   </nav>
                 </div>
-                <div>
-                  <div className="flex justify-between px-4">
-                    <span className="text-white text-sm font-semibold">
-                      Super Pay
-                    </span>
-                    <span className="text-white text-sm">0.1.3</span>
+                <div className="flex flex-col gap-2">
+                  <div>
+                    <nav>
+                      {/* Verificación*/}
+                      <div className="flex bg-red-200 py-3">
+                        <Link href="/verification">
+                          <a className="text-red-800 mx-auto flex">
+                            <BsFillShieldSlashFill
+                              className="mr-4 flex-shrink-0 h-6 w-6 text-red-600"
+                              aria-hidden="true"
+                            />
+                            No Verificado
+                          </a>
+                        </Link>
+                      </div>
+                    </nav>
                   </div>
-                  <div className="px-4">
-                    <hr />
+                  <div className="px-4 align-bottom">
+                    <div className="flex justify-between">
+                      <span className="text-white text-sm font-semibold">
+                        Super Pay
+                      </span>
+                      <span className="text-white text-sm">0.1.3</span>
+                    </div>
+                    <div>
+                      <hr />
+                    </div>
                   </div>
                   <div className="px-4"></div>
                 </div>

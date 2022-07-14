@@ -23,7 +23,7 @@ export default function Loginform() {
   useEffect(() => {
     if (socket) {
       socket.on("socket:session", (data) => {
-        localStorage.setItem("session_id", data.session_id);
+        sessionStorage.setItem("session_id", data.session_id);
         socket.auth = { session_id: data.session_id };
         socket.emit("socket:join", {});
         Router.push("/home");
@@ -80,7 +80,7 @@ export default function Loginform() {
                       false
                     );
                     if (user?.isLoggedIn) {
-                      localStorage.setItem("socket", user.token);
+                      sessionStorage.setItem("socket", user.token);
                       socket.auth = { user_id: user.token };
                       socket.connect();
                     } else {

@@ -8,6 +8,7 @@ import SaldoMain from "../components/SaldoMain";
 import SaldoWallet from "../components/SaldoWallet";
 import { sessionOptions } from "../lib/session";
 import { setLoading } from "../redux/appSlice";
+import jwt from "jsonwebtoken";
 
 export default function Home({ user }) {
   const dispatch = useDispatch();
@@ -17,19 +18,19 @@ export default function Home({ user }) {
   return (
     <>
       {user && (
-        <Layout>
+        <Layout height="h-[92%]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-full">
-            <div className="h-full grid grid-rows-10 gap-1 overflow-hidden">
-              <div className="row-span-3">
-                <SaldoMain />
+            <div className="h-full grid grid-rows-14 gap-1 overflow-hidden">
+              <div className="row-start-1 row-span-4">
+                <SaldoMain user={user} />
               </div>
-              <div className="row-start-4 row-span-2 overflow-y-auto border-t pt-2">
+              <div className="row-span-4 overflow-y-auto border-t pt-2">
                 <SaldoWallet />
               </div>
               <div className="row-span-4">
                 <Cupones />
               </div>
-              <div className="row-start-[10] row-end-[11] flex items-center px-1">
+              <div className="row-start-[14] row-end-[15] flex items-center pb-4">
                 <ActionsMain />
               </div>
             </div>
@@ -44,7 +45,7 @@ export const getServerSideProps = withIronSessionSsr(async function ({
   req,
   res,
 }) {
-  const user = req?.session?.user;
+  let user = req?.session?.user;
 
   if (!user || user === undefined) {
     res.setHeader("location", "/auth/signin");
@@ -55,10 +56,10 @@ export const getServerSideProps = withIronSessionSsr(async function ({
       },
     };
   }
-
+  user = user && jwt.decode(user.token);
   return {
     props: {
-      user: user,
+      user: user.user,
     },
   };
 },

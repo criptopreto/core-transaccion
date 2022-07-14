@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { RiCoupon3Fill } from "react-icons/ri";
 
 export default function Cupones() {
   return (
     <div className="w-full h-full">
       <div className="w-full">
-        <span className="text-indigo-100 text-lg font-semibold">
+        <span className="text-indigo-100 text-lg font-semibold flex items-center gap-2">
+          <RiCoupon3Fill />
           Mis cupones
         </span>
       </div>

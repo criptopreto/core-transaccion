@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { MdCancel } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory } from "../../redux/appSlice";
+import { ImSpinner2 } from "react-icons/im";
 import {
   BsArrowUpRightSquareFill,
   BsArrowDownLeftSquareFill,
@@ -32,7 +33,12 @@ export default function Index() {
   }, []);
   return (
     <div className="mb-2">
-      {history.length > 0 ? (
+      {!history ? (
+        <div className="w-full flex gap-1 items-center text-indigo-900 bg-gradient-to-br from-indigo-300  to-purple-200 px-4 py-5 rounded-md shadow-sm text-center">
+          <ImSpinner2 className="ml-auto h-5 w-5" />
+          <span className="mr-auto">Cargando transacciones...</span>
+        </div>
+      ) : history.length > 0 ? (
         <div className="flex items-center flex-col gap-y-2">
           {history.map((his) => (
             <div

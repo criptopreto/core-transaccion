@@ -122,9 +122,9 @@ export default function Amount({ balance = 0, currency_id, user_id }) {
                   leaveTo="translate-y-full"
                 >
                   <Dialog.Panel className="pointer-events-auto w-full">
-                    <div className="flex h-full flex-col overflow-hidden bg-white shadow-xl rounded-t-xl">
+                    <div className="flex h-full flex-col overflow-hidden bg-white/10 backdrop-blur-sm shadow-xl rounded-t-xl">
                       <div className="h-0 flex-1 overflow-y-auto">
-                        <div className="bg-gradient-to-r from-violet-900 to-violet-600 py-6 px-4 sm:px-6">
+                        <div className="bg-gradient-to-r from-violet-900/50 to-violet-600/50 py-6 px-4 sm:px-6">
                           <div className="flex items-start justify-between">
                             <Dialog.Title className="text-lg font-medium text-indigo-100 text-center w-full">
                               {destinatary} recibirá:
@@ -144,47 +144,49 @@ export default function Amount({ balance = 0, currency_id, user_id }) {
                             ({user_destinatary.username})
                           </p>
                         </div>
-                        <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                          {/* content */}
-                          <div className="w-full p-2">
-                            <h2 className="text-3xl text-center w-full font-semibold text-indigo-900">
-                              $ {formatAmount(amount.join(""))}
-                            </h2>
-                            <h3 className="text-lg text-indigo-800/80 text-center">
-                              ~ {convertToBs(amount.join(""))} Bs
-                            </h3>
+                        <div className="bg-white/70 py-8">
+                          <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                            {/* content */}
+                            <div className="w-full p-2">
+                              <h2 className="text-3xl text-center w-full font-semibold text-indigo-900">
+                                $ {formatAmount(amount.join(""))}
+                              </h2>
+                              <h3 className="text-lg text-indigo-800/80 text-center">
+                                ~ {convertToBs(amount.join(""))} Bs
+                              </h3>
+                            </div>
+                            <div className="absolute inset-0 px-4 sm:px-6">
+                              <div
+                                className="h-full border-2 border-dashed border-gray-200"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            {/* /End Content */}
                           </div>
-                          <div className="absolute inset-0 px-4 sm:px-6">
-                            <div
-                              className="h-full border-2 border-dashed border-gray-200"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          {/* /End Content */}
-                        </div>
-                        <div className="p-4">
-                          <div className="p-5 bg-indigo-100/20">
-                            <div className="w-full flex justify-between">
-                              <span className="text-indigo-800/70">
-                                Método de pago:
-                              </span>
-                              <span className="text-indigo-900">
-                                Billetera Principal Pay
-                              </span>
+                          <div className="p-4">
+                            <div className="p-5 bg-indigo-200/40">
+                              <div className="w-full flex justify-between">
+                                <span className="text-indigo-800/70">
+                                  Método de pago:
+                                </span>
+                                <span className="text-indigo-900">
+                                  Billetera Principal Pay
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="px-4 sm:px-6 mb-10">
-                          <button
-                            className="w-full p-4 bg-gradient-to-r from-green-700 to-green-600/90 rounded-md mt-6 text-green-50 disabled:bg-gradient-to-r disabled:from-indigo-800/70 disabled:to-indigo-600/70 flex shadow-sm"
-                            disabled={amount.length === 0}
-                            onClick={handlePagar}
-                          >
-                            <span className="mx-auto flex items-center gap-2">
-                              Pagar
-                              <MdCheck className="h-5 w-5" />
-                            </span>
-                          </button>
+                          <div className="px-4 sm:px-6 mb-10">
+                            <button
+                              className="w-full p-4 bg-gradient-to-r from-green-700 to-green-600/90 rounded-md mt-6 text-green-50 disabled:bg-gradient-to-r disabled:from-indigo-800/70 disabled:to-indigo-600/70 flex shadow-md shadow-green-700/40"
+                              disabled={amount.length === 0}
+                              onClick={handlePagar}
+                            >
+                              <span className="mx-auto flex items-center gap-2">
+                                Pagar
+                                <MdCheck className="h-5 w-5" />
+                              </span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>

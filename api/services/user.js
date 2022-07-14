@@ -54,6 +54,7 @@ async function signinWithUser(user) {
       "hash",
       "country",
       "status",
+      "name",
       "staff",
       "role",
       "image",
