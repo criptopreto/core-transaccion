@@ -7,6 +7,7 @@ import Head from "next/head";
 import fetchJson from "../lib/fetchJson";
 import { SWRConfig } from "swr";
 import "react-toastify/dist/ReactToastify.css";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           <link rel="apple-touch-icon" href="/apple-icon.png"></link>
           <meta name="theme-color" content="#317EFB" />
         </Head>
+        <NextNProgress />
         <Component {...pageProps} />
       </Provider>
     </SWRConfig>

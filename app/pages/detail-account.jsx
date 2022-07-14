@@ -1,9 +1,8 @@
 import React from "react";
 import Layout from "../components/Layout";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ImArrowLeft2 } from "react-icons/im";
 import { BiHistory } from "react-icons/bi";
-import { restartPaySteps } from "../redux/appSlice";
 import Saldo from "../components/pay/Saldo";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
