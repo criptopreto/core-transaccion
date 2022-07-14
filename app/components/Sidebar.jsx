@@ -8,9 +8,10 @@ import Link from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSidebarOpen } from "../redux/appSlice";
+import { setLoading, setSidebarOpen } from "../redux/appSlice";
 import Image from "next/image";
 import logoImg from "../public/assets/images/logo.svg";
+import { useRouter } from "next/router";
 
 const navigation = [
   { name: "Inicio", href: "/home", icon: FaHome },
@@ -26,11 +27,19 @@ function classNames(...classes) {
 }
 
 export default function Sidebar() {
+  const router = useRouter();
   const user = useSelector((state) => state.app.user);
   const sidebarOpen = useSelector((state) => state.app.sidebarOpen);
   const dispatch = useDispatch();
   const handleSidebar = (action) => {
     dispatch(setSidebarOpen(action));
+  };
+
+  const handleSidebarOption = (href) => {
+    // verify if is the same route
+    if (router.pathname === href) return;
+    dispatch(setSidebarOpen(false));
+    dispatch(setLoading(true));
   };
   return (
     <>
@@ -110,6 +119,9 @@ export default function Sidebar() {
                               : "text-slate-100 hover:bg-slate-600",
                             "group flex items-center px-2 py-2 text-base font-medium rounded-md"
                           )}
+                          onClick={() => {
+                            handleSidebarOption(item.href);
+                          }}
                         >
                           <item.icon
                             className="mr-4 flex-shrink-0 h-6 w-6 text-slate-300"

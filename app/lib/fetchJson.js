@@ -7,6 +7,8 @@ export default async function fetchJson(input, init) {
 
   // response.ok is true when res.status is 2xx
   // https://developer.mozilla.org/en-US/docs/Web/API/Response/ok
+  console.log("Fetching");
+  console.log(response);
   if (response.ok) {
     return data;
   }

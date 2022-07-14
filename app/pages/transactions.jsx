@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import { ImArrowLeft2 } from "react-icons/im";
 import Saldo from "../components/pay/Saldo";
@@ -7,15 +7,21 @@ import { useRouter } from "next/router";
 import { BiHistory } from "react-icons/bi";
 import { MdCancel } from "react-icons/md";
 import TransactionsHistory from "../components/transactions/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../redux/appSlice";
 
 export default function Transactions() {
+  const dispatch = useDispatch();
   const router = useRouter();
   let saldo =
     useSelector((state) => state.app?.user?.pay_accounts[0]?.balance) || 0;
   const handleBack = () => {
     return router.push("/home");
   };
+
+  useEffect(() => {
+    dispatch(setLoading(false));
+  }, []);
   return (
     <Layout nonHeader nonSidebar className="h-full bg-white-styled bg-cover">
       <div className="h-full">

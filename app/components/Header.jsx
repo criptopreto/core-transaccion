@@ -26,7 +26,7 @@ export default function Header() {
     { name: "Perfil", href: "/profile/1", action: null },
     {
       name: "Cerrar Sesión",
-      href: "/home",
+      href: "/auth/signout",
       action: async () => {
         socket.disconnect();
         mutateUser(

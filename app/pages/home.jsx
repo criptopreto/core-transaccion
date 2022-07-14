@@ -1,12 +1,18 @@
 import { withIronSessionSsr } from "iron-session/next";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import ActionsMain from "../components/ActionsMain";
 import Layout from "../components/Layout";
 import SaldoMain from "../components/SaldoMain";
 import SaldoWallet from "../components/SaldoWallet";
 import { sessionOptions } from "../lib/session";
+import { setLoading } from "../redux/appSlice";
 
 export default function Home({ user }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setLoading(false));
+  }, []);
   return (
     <>
       {user && (
