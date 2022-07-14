@@ -6,7 +6,6 @@ import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { Fragment } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import useUser from "../lib/useUser";
 import fetchJson from "../lib/fetchJson";
 import useSocket from "../config/useSocket.js";
@@ -72,7 +71,7 @@ export default function Header() {
                 <span className="sr-only">Open user menu</span>
                 <Image
                   className="h-10 w-10 rounded-full outline-indigo-700"
-                  src={"/assets/images/profile.svg"}
+                  src="/assets/images/profile.svg"
                   alt="profile"
                   width={40}
                   height={40}
