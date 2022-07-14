@@ -44,7 +44,8 @@ export default function SaldoMain({ user }) {
             {saludo}, {user.name} 👋
           </span>
         </div>
-        <div className="bg-gradient-to-br h-3/4 grid grid-rows-4 from-blue-900/70 to-blue-700/70 rounded-lg px-5 py-2 shadow-xl shadow-blue-900/70">
+        <div className="relative bg-gradient-to-br h-3/4 grid grid-rows-4 from-blue-900/70 to-blue-700/70 rounded-lg px-5 py-2 shadow-xl shadow-blue-900/70">
+          <div className="absolute bg-[url('/assets/images/global.svg')] bg-fixed bg-cover inset-0 h-full rounded-lg"></div>
           <div className="row-span-1 w-full">
             <span className="text-indigo-100 font-semibold">
               Billetera Pricipal
@@ -69,7 +70,7 @@ export default function SaldoMain({ user }) {
               </div>
             </a>
           </Link>
-          <div className="flex items-center text-sm justify-end w-full text-violet-200 gap-2">
+          <div className="flex items-center text-sm justify-end w-full text-violet-200 gap-2 z-10">
             {`Pay ID: ${pay_account.pay_id}`}{" "}
             <FaRegCopy className="transition-all duration-500 ease-in-out cursor-pointer hover:text-lg hover:text-violet-400" />
           </div>

@@ -92,7 +92,10 @@ export default function SaldoWallet() {
         <div className="overflow-y-auto">
           <div className="flex gap-y-2 flex-col">
             {wallets.map((wallet) => (
-              <Link href="/detail-wallet" key={wallet.name}>
+              <Link
+                href={`/detail-wallet?symbol=${wallet.symbol}&name=${wallet.name}&balance=${wallet.balance}&icon=${wallet.icon}`}
+                key={wallet.name}
+              >
                 <a className="flex justify-between items-center">
                   <div className="flex items-center">
                     <div className="h-10 w-10 relative">

@@ -35,6 +35,7 @@
     "next-redux-wrapper": "^7.0.5",
     "nextjs-progressbar": "^0.0.14",
     "react": "18.2.0",
+    "react-avatar-edit": "^1.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-native-touch-id": "^4.4.1",

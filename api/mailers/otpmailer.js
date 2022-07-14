@@ -380,7 +380,7 @@ class OTPMailer extends Mailer {
                                             valign="middle"
                                           >
                                             <a
-                                              href="https://dev.moneyapp.pro/auth/verify-email?email=${to}"
+                                              href="https://demo.moneyapp.pro/auth/verify-email?email=${to}"
                                               style="
                                                 display: inline-block;
                                                 background: #d0c4ff;
