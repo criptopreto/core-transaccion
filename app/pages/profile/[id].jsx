@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import Layout from "../../components/Layout";
 import { ImArrowLeft2 } from "react-icons/im";
 import { useRouter } from "next/router";
-import { BiHistory } from "react-icons/bi";
-import { useDispatch } from "react-redux";
 import Image from "next/image";
 import { BsFillShieldSlashFill } from "react-icons/bs";
 import useUser from "../../lib/useUser";

@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { useEffect } from "react";
 import { FaRegCopy } from "react-icons/fa";
+import { RiShareFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import useUser from "../lib/useUser";
 
@@ -20,6 +21,22 @@ function convertToBs(value, secondary) {
 
 export default function SaldoMain({ user }) {
   const [saludo, setSaludo] = React.useState("Hola");
+
+  const handleShare = (code) => {
+    if (navigator.share) {
+      console.log("share");
+      navigator
+        .share({
+          text: "Mi Pay ID: " + code,
+        })
+        .then(() => {
+          console.log("Sharing successfull");
+        })
+        .catch(() => {
+          console.log("Sharing failed");
+        });
+    }
+  };
 
   // Set greeting based on time of day
   useEffect(() => {
@@ -72,7 +89,12 @@ export default function SaldoMain({ user }) {
           </Link>
           <div className="flex items-center text-sm justify-end w-full text-violet-200 gap-2 z-10">
             {`Pay ID: ${pay_account.pay_id}`}{" "}
-            <FaRegCopy className="transition-all duration-500 ease-in-out cursor-pointer hover:text-lg hover:text-violet-400" />
+            <RiShareFill
+              className="transition-all duration-500 ease-in-out cursor-pointer hover:text-lg hover:text-violet-400"
+              onClick={() => {
+                handleShare(pay_account.pay_id);
+              }}
+            />
           </div>
         </div>
       </div>
