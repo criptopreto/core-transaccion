@@ -71,7 +71,7 @@ export default function Layout({
       <div className={className ? className : "h-full bg-alpha-dark bg-cover"}>
         {loading ? <Loader /> : loading_pay ? <LoaderPay /> : null}
         {nonSidebar ? "" : <Sidebar />}
-        <div className="md:pl-64 flex flex-col flex-1 h-full">
+        <div className="md:pl-64 flex flex-col flex-1 h-full max-w-screen-md mx-auto">
           {nonHeader ? "" : <Header />}
 
           <main className={height}>
