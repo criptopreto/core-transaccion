@@ -57,3 +57,5 @@ profile-*
 *flamegraph*
 .env
 .env.prod
+
+/cert
